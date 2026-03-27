@@ -20,7 +20,10 @@ jobs:
           python-version: "3.13"
 
       - name: Install Python Dependencies
-        run: pip install - requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Run Tests
         run: pytest
+
+      - name: Simulate Deploy
+        run: echo "Deploying app from main..."
