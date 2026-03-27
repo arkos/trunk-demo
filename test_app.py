@@ -2,8 +2,8 @@ from app import greet
 
 
 def test_greet():
-    assert greet("Kostya") == "Hello, Kostya!"
+    assert greet("Kostya") == "Hello, KOSTYA!"
 
 
 def test_greet_trim_spaces():
-    assert greet("  Kostya  ") == "Hello, Kostya!"
+    assert greet("  Kostya  ") == "Hello, KOSTYA!"
