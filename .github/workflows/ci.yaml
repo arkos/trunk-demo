@@ -40,12 +40,3 @@ jobs:
 
       - name: Run Tests
         run: pytest
-
-      - name: Build Package
-        run: python -m build
-
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v6
-        with:
-          name: python-dist-${{ github.sha }}
-          path: dist/
