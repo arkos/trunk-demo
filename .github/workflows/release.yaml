@@ -33,6 +33,23 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Run Trivy Scan
+        uses: aquasecurity/trivy-action@0.35.0
+        with:
+          scan-type: "fs"
+          scan-ref: "."
+          format: "sarif"
+          output: "trivy-results.sarif"
+          severity: "HIGH,CRITICAL"
+          ignore-unfixed: true
+          exit-code: "1"
+
+      - name: Upload Trivy Results to GitHub Security
+        if: always()
+        uses: github/codeql-action/upload-sarif@v4.35.1
+        with:
+          sarif_file: "trivy-results.sarif"
+
       - name: Prepare Release Files
         run: |
           mkdir -p release
